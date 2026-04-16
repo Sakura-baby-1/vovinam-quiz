@@ -387,7 +387,8 @@ body {
 .dashboard-nav {
   background: white;
   border-bottom: 1px solid var(--border);
-  sticky: top 70px;
+  position: sticky;
+  top: 70px;
 }
 
 .nav-container {

@@ -83,7 +83,7 @@ const appData = {
       id: 1,
       topic: 'Kỹ Thuật Cơ Bản',
       title: 'Các Đòn Tay Cơ Bản',
-      description: 'Học các kỹ thuật đòn tay cơ bản trong Vovinam',
+      description: 'Học các kỹ thuật đòn tay cơ bản trong môn võ Vovinam chính thống',
       emoji: '👊',
       difficulty: 'Dễ',
       questions: [
@@ -148,7 +148,7 @@ const appData = {
       id: 2,
       topic: 'Triết Lý Vovinam',
       title: 'Giáo Lý và Nguyên Tắc',
-      description: 'Hiểu rõ những nguyên tắc nền tảng của Vovinam',
+      description: 'Hiểu rõ những nguyên tắc nền tảng của môn võ Vovinam chính thống',
       emoji: '🧘',
       difficulty: 'Trung Bình',
       questions: [
@@ -212,8 +212,8 @@ const appData = {
     {
       id: 3,
       topic: 'Lịch Sử Vovinam',
-      title: 'Phát Triển của Ngành Vovinam',
-      description: 'Tìm hiểu lịch sử phát triển của Vovinam ở Việt Nam và thế giới',
+      title: 'Phát Triển của Môn Võ',
+      description: 'Khám phá lịch sử hình thành và phát triển của Vovinam trên toàn cầu',
       emoji: '📚',
       difficulty: 'Khó',
       questions: [
