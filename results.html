@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kết Quả - Vovinam Academy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="results-page">
+  <!-- Header -->
+  <header class="dashboard-header">
+    <div class="header-container">
+      <div class="header-left">
+        <div class="logo">🥋 Vovinam Academy</div>
+      </div>
+      <div class="header-right">
+        <div class="user-menu">
+          <button class="user-avatar" id="user-dropdown-btn">👤</button>
+          <div class="dropdown-menu" id="user-dropdown">
+            <a href="#">Hồ Sơ</a>
+            <a href="#">Cài Đặt</a>
+            <a href="#" id="logout-btn">Đăng Xuất</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="dashboard-nav">
+    <div class="nav-container">
+      <a href="dashboard.html" class="nav-item" data-page="dashboard">📊 Dashboard</a>
+      <a href="quiz.html" class="nav-item" data-page="quiz">❓ Bài Tập</a>
+      <a href="results.html" class="nav-item active" data-page="results">📈 Kết Quả</a>
+      <a href="content.html" class="nav-item" data-page="content">📚 Nội Dung</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="results-content">
+    <div class="container">
+      <h1>Kết Quả Học Tập</h1>
+      <p class="subtitle">Theo dõi tiến độ và thành tích của bạn</p>
+
+      <!-- Filters -->
+      <div class="results-filters">
+        <select id="filter-period">
+          <option value="all">Tất Cả Thời Gian</option>
+          <option value="week">Tuần Này</option>
+          <option value="month">Tháng Này</option>
+          <option value="today">Hôm Nay</option>
+        </select>
+      </div>
+
+      <!-- Results Table -->
+      <div class="results-table">
+        <table id="results-table">
+          <thead>
+            <tr>
+              <th>Bài Tập</th>
+              <th>Ngày Làm</th>
+              <th>Điểm</th>
+              <th>Trạng Thái</th>
+              <th>Hành Động</th>
+            </tr>
+          </thead>
+          <tbody id="results-tbody">
+            <!-- Results will be loaded here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chart Section -->
+      <section class="chart-section">
+        <h2>Biểu Đồ Tiến Độ</h2>
+        <div class="chart-container" id="progress-chart">
+          <!-- Chart will be rendered here -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="dashboard-footer">
+    <div class="container">
+      <p>&copy; 2026 Vovinam Academy. Tất cả quyền được bảo lưu.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

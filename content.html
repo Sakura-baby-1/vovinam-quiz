@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nội Dung - Vovinam Academy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="content-page">
+  <!-- Header -->
+  <header class="dashboard-header">
+    <div class="header-container">
+      <div class="header-left">
+        <div class="logo">🥋 Vovinam Academy</div>
+      </div>
+      <div class="header-right">
+        <div class="user-menu">
+          <button class="user-avatar" id="user-dropdown-btn">👤</button>
+          <div class="dropdown-menu" id="user-dropdown">
+            <a href="#">Hồ Sơ</a>
+            <a href="#">Cài Đặt</a>
+            <a href="#" id="logout-btn">Đăng Xuất</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="dashboard-nav">
+    <div class="nav-container">
+      <a href="dashboard.html" class="nav-item" data-page="dashboard">📊 Dashboard</a>
+      <a href="quiz.html" class="nav-item" data-page="quiz">❓ Bài Tập</a>
+      <a href="results.html" class="nav-item" data-page="results">📈 Kết Quả</a>
+      <a href="content.html" class="nav-item active" data-page="content">📚 Nội Dung</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="content-main">
+    <div class="container">
+      <h1>Nội Dung Học Tập</h1>
+      <p class="subtitle">Tài liệu hướng dẫn về các kỹ thuật Vovinam cơ bản</p>
+
+      <!-- Content Categories -->
+      <div class="content-tabs">
+        <button class="tab-btn active" data-category="all">Tất Cả</button>
+        <button class="tab-btn" data-category="techniques">Kỹ Thuật</button>
+        <button class="tab-btn" data-category="history">Lịch Sử</button>
+        <button class="tab-btn" data-category="philosophy">Triết Lý</button>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="content-grid" id="content-grid">
+        <!-- Content cards will be loaded here -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="dashboard-footer">
+    <div class="container">
+      <p>&copy; 2026 Vovinam Academy. Tất cả quyền được bảo lưu.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

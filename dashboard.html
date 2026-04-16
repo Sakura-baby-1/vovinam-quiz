@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Vovinam Academy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dashboard-page">
+  <!-- Header -->
+  <header class="dashboard-header">
+    <div class="header-container">
+      <div class="header-left">
+        <div class="logo">🥋 Vovinam Academy</div>
+      </div>
+      <div class="header-right">
+        <div class="search-bar">
+          <input type="text" placeholder="Tìm kiếm bài tập...">
+          <button>🔍</button>
+        </div>
+        <div class="user-menu">
+          <button class="user-avatar" id="user-dropdown-btn">👤</button>
+          <div class="dropdown-menu" id="user-dropdown">
+            <a href="#">Hồ Sơ</a>
+            <a href="#">Cài Đặt</a>
+            <a href="#" id="logout-btn">Đăng Xuất</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="dashboard-nav">
+    <div class="nav-container">
+      <a href="dashboard.html" class="nav-item active" data-page="dashboard">📊 Dashboard</a>
+      <a href="quiz.html" class="nav-item" data-page="quiz">❓ Bài Tập</a>
+      <a href="results.html" class="nav-item" data-page="results">📈 Kết Quả</a>
+      <a href="content.html" class="nav-item" data-page="content">📚 Nội Dung</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="dashboard-content">
+    <div class="container">
+      <!-- Welcome Section -->
+      <section class="welcome-section">
+        <h1 id="welcome-name">Xin chào, Học Viên!</h1>
+        <p>Hôm nay là một ngày tuyệt vời để học tập và rèn luyện kỹ năng Vovinam của bạn</p>
+      </section>
+
+      <!-- Stats Row -->
+      <section class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon">📝</div>
+          <div class="stat-info">
+            <div class="stat-label">Bài Tập Đã Làm</div>
+            <div class="stat-value" id="completed-quizzes">0</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-info">
+            <div class="stat-label">Điểm Trung Bình</div>
+            <div class="stat-value" id="avg-score">0%</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🔥</div>
+          <div class="stat-info">
+            <div class="stat-label">Chuỗi Ngày Học</div>
+            <div class="stat-value" id="streak-days">0</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-info">
+            <div class="stat-label">Tiến Độ</div>
+            <div class="stat-value" id="progress-percent">0%</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quiz Collections -->
+      <section class="quiz-section">
+        <h2>Bộ Bài Tập</h2>
+        <div class="quiz-grid" id="quiz-grid">
+          <!-- Quiz cards will be loaded here -->
+        </div>
+      </section>
+
+      <!-- Recent Activity -->
+      <section class="activity-section">
+        <h2>Hoạt Động Gần Đây</h2>
+        <div class="activity-list" id="activity-list">
+          <!-- Activity items will be loaded here -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="dashboard-footer">
+    <div class="container">
+      <p>&copy; 2026 Vovinam Academy. Tất cả quyền được bảo lưu.</p>
+      <div class="footer-links">
+        <a href="#">Về Chúng Tôi</a>
+        <a href="#">Liên Hệ</a>
+        <a href="#">Chính Sách</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

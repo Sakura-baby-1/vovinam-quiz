@@ -3,193 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trắc Nghiệm Vovinam</title>
+  <title>Vovinam Academy - Đăng Nhập</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <header class="header">
-    <div class="top-bar">
-      <div class="container">
-        <div class="top-links">
-          <a href="#">MBTI</a>
-          <a href="#">DISC</a>
-          <a href="#">Test IQ</a>
-          <a href="#">EQ</a>
-          <a href="#">Kiến Thức</a>
-          <a href="#">ĐGNL</a>
-          <a href="#">HSK</a>
-          <a href="#">VSTEP</a>
-        </div>
-        <div class="class-list">
-          <a href="#">Lớp 1</a>
-          <a href="#">Lớp 2</a>
-          <a href="#">Lớp 3</a>
-          <a href="#">Lớp 4</a>
-          <a href="#">Lớp 5</a>
-          <a href="#">Lớp 6</a>
-          <a href="#">Lớp 7</a>
-          <a href="#">Lớp 8</a>
-          <a href="#">Lớp 9</a>
-          <a href="#">Lớp 10</a>
-          <a href="#">Lớp 11</a>
-          <a href="#">Lớp 12</a>
-        </div>
+<body class="auth-page">
+  <div class="auth-container">
+    <div class="auth-left">
+      <div class="auth-brand">
+        <h1>🥋 Vovinam Academy</h1>
+        <p>Nền tảng học tập Vovinam hiện đại</p>
       </div>
+      <img src="https://images.unsplash.com/photo-1570295926550-444cd343c837?w=600&h=800&fit=crop" alt="Vovinam Training" class="auth-image">
     </div>
-    <nav class="main-nav">
-      <div class="container">
-        <div class="logo">Trắc Nghiệm</div>
-        <button class="nav-toggle" onclick="toggleMenu()" aria-label="Mở menu">☰</button>
-        <ul class="main-menu" id="mainNavMenu">
-          <li><a href="#home">Trang Chủ</a></li>
-          <li><a href="#dethi">Đề Thi</a></li>
-          <li><a href="#bo-de">Bộ Đề</a></li>
-          <li><a href="#lien-he">Liên Hệ</a></li>
-          <li><a href="#">Dịch Vụ</a></li>
-          <li><a href="#">Tuyển Dụng</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
 
-  <main class="main-content" id="home">
-    <div class="container">
-      <h1 class="exam-title">ĐỀ THI THỬ VOVINAM – ĐỀ 1</h1>
-      <div class="exam-info">
-        <div class="exam-details">
-          <div class="detail-item">
-            <span class="number">20</span>
-            <span class="label">Câu hỏi</span>
-          </div>
-          <div class="detail-item">
-            <span class="number">15</span>
-            <span class="label">Phút</span>
-          </div>
-          <div class="detail-item">
-            <span class="number">14</span>
-            <span class="label">Điểm đạt</span>
-          </div>
-        </div>
-        <button class="start-btn" onclick="startQuiz()">BẮT ĐẦU LÀM BÀI</button>
-        <div class="exam-list" id="dethi">
-          <h3>Chọn Đề Thi</h3>
-          <div class="exam-grid">
-            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
-              <h4>Đề Số 1</h4>
-              <p>Vovinam Cơ Bản</p>
-            </a>
-            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
-              <h4>Đề Số 2</h4>
-              <p>Lịch Sử Vovinam</p>
-            </a>
-            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
-              <h4>Đề Số 3</h4>
-              <p>Kỹ Thuật Võ</p>
-            </a>
-            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
-              <h4>Đề Số 4</h4>
-              <p>Triết Lý Võ Đạo</p>
-            </a>
-            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
-              <h4>Đề Số 5</h4>
-              <p>Bài Quyền</p>
-            </a>
-            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
-              <h4>Đề Số 6</h4>
-              <p>Đòn Thế</p>
-            </a>
-            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
-              <h4>Đề Số 7</h4>
-              <p>Binh Khí</p>
-            </a>
-            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
-              <h4>Đề Số 8</h4>
-              <p>Đối Luyện</p>
-            </a>
-            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
-              <h4>Đề Số 9</h4>
-              <p>Ôn Tập Tổng Hợp</p>
-            </a>
-            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
-              <h4>Đề Số 10</h4>
-              <p>Thi Chứng Chỉ</p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+    <div class="auth-right">
+      <div class="auth-forms">
+        <!-- Login Form -->
+        <form id="login-form" class="auth-form active">
+          <h2>Đăng Nhập</h2>
+          <p>Chào mừng quay lại với Vovinam Academy</p>
 
-  <section class="extended-section" id="bo-de">
-    <div class="container">
-      <h2 class="extended-title">Đề Thi Thử Vovinam 200 Câu Đầy Đủ</h2>
-      <p>
-        Kho tài liệu ôn thi Vovinam đầy đủ nhất với hơn 200 câu hỏi trắc nghiệm,
-        bao gồm tất cả các chủ đề từ cơ bản đến nâng cao.
-      </p>
-      <button class="full-access-btn" onclick="startQuiz()">TRUY CẬP TOÀN BỘ 200 CÂU HỎI</button>
-    </div>
-  </section>
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" placeholder="your@email.com" required>
+          </div>
 
-  <footer class="footer" id="lien-he">
-    <div class="container">
-      <div class="footer-section">
-        <h4>Về Chúng Tôi</h4>
-        <ul>
-          <li><a href="#">Giới thiệu</a></li>
-          <li><a href="#">Liên hệ</a></li>
-          <li><a href="#">Tuyển dụng</a></li>
-          <li><a href="#">Đối tác</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Chính Sách</h4>
-        <ul>
-          <li><a href="#">Bảo mật</a></li>
-          <li><a href="#">Điều khoản</a></li>
-          <li><a href="#">Quyền riêng tư</a></li>
-          <li><a href="#">Hoàn tiền</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Dịch Vụ</h4>
-        <ul>
-          <li><a href="#">Ôn thi Đại học</a></li>
-          <li><a href="#">Thi Chuyển cấp</a></li>
-          <li><a href="#">Đào tạo</a></li>
-          <li><a href="#">Tư vấn</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Kết nối với chúng tôi</h4>
-        <div class="social-links">
-          <a href="#" title="Facebook">📘</a>
-          <a href="#" title="Twitter">🐦</a>
-          <a href="#" title="YouTube">📺</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Trắc Nghiệm Vovinam. Tất cả quyền được bảo lưu.</p>
-    </div>
-  </footer>
+          <div class="form-group">
+            <label for="login-password">Mật Khẩu</label>
+            <input type="password" id="login-password" placeholder="••••••••" required>
+          </div>
 
-  <div id="quizModal" class="quiz-modal">
-    <div class="quiz-container">
-      <button class="close-quiz" onclick="closeQuiz()">&times;</button>
-      <div class="quiz-header">
-        <h2>Thi Trắc Nghiệm Vovinam</h2>
-        <div id="quizProgress" class="quiz-progress">Câu 1 / 20</div>
-      </div>
-      <div id="quizQuestion" class="quiz-question"></div>
-      <div id="quizOptions" class="quiz-options"></div>
-      <div id="quizFeedback" class="quiz-feedback"></div>
-      <div class="quiz-navigation">
-        <button id="nextBtn" class="quiz-next-btn" onclick="nextQuestion()" disabled>Câu tiếp</button>
+          <div class="form-checkbox">
+            <input type="checkbox" id="remember-me">
+            <label for="remember-me">Ghi nhớ tôi</label>
+          </div>
+
+          <button type="submit" class="btn-primary">Đăng Nhập</button>
+
+          <p class="form-switch">
+            Chưa có tài khoản? <button type="button" id="to-signup" class="btn-link">Đăng Ký Ngay</button>
+          </p>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signup-form" class="auth-form">
+          <h2>Đăng Ký Tài Khoản</h2>
+          <p>Tham gia cộng đồng học viên Vovinam</p>
+
+          <div class="form-group">
+            <label for="signup-fullname">Họ và Tên</label>
+            <input type="text" id="signup-fullname" placeholder="Nguyễn Văn A" required>
+          </div>
+
+          <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" placeholder="your@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="signup-password">Mật Khẩu</label>
+            <input type="password" id="signup-password" placeholder="••••••••" required>
+          </div>
+
+          <div class="form-group">
+            <label for="signup-password-confirm">Xác Nhận Mật Khẩu</label>
+            <input type="password" id="signup-password-confirm" placeholder="••••••••" required>
+          </div>
+
+          <div class="form-checkbox">
+            <input type="checkbox" id="terms-agree" required>
+            <label for="terms-agree">Tôi đồng ý với <a href="#" class="link">Điều khoản dịch vụ</a></label>
+          </div>
+
+          <button type="submit" class="btn-primary">Đăng Ký</button>
+
+          <p class="form-switch">
+            Đã có tài khoản? <button type="button" id="to-login" class="btn-link">Đăng Nhập</button>
+          </p>
+        </form>
       </div>
     </div>
   </div>
 
-  <script src="script.js" defer></script>
+  <script src="auth.js"></script>
 </body>
 </html>

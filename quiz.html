@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài Tập - Vovinam Academy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="quiz-page">
+  <!-- Header -->
+  <header class="dashboard-header">
+    <div class="header-container">
+      <div class="header-left">
+        <div class="logo">🥋 Vovinam Academy</div>
+      </div>
+      <div class="header-right">
+        <div class="user-menu">
+          <button class="user-avatar" id="user-dropdown-btn">👤</button>
+          <div class="dropdown-menu" id="user-dropdown">
+            <a href="#">Hồ Sơ</a>
+            <a href="#">Cài Đặt</a>
+            <a href="#" id="logout-btn">Đăng Xuất</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="dashboard-nav">
+    <div class="nav-container">
+      <a href="dashboard.html" class="nav-item" data-page="dashboard">📊 Dashboard</a>
+      <a href="quiz.html" class="nav-item active" data-page="quiz">❓ Bài Tập</a>
+      <a href="results.html" class="nav-item" data-page="results">📈 Kết Quả</a>
+      <a href="content.html" class="nav-item" data-page="content">📚 Nội Dung</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="quiz-content">
+    <div class="container">
+      <div id="quiz-list-view" class="quiz-list-view">
+        <!-- Quiz selection view -->
+        <h1>Chọn Bài Tập</h1>
+        <div class="quiz-list" id="quiz-list">
+          <!-- Quiz items will be loaded here -->
+        </div>
+      </div>
+
+      <div id="quiz-taker-view" class="quiz-taker-view" style="display: none;">
+        <!-- Quiz taking view -->
+        <div class="quiz-header">
+          <button id="back-to-list-btn" class="btn-secondary">← Quay Lại</button>
+          <div class="quiz-progress">
+            <span id="question-counter">1/10</span>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </div>
+          <span id="timer">15:00</span>
+        </div>
+
+        <div class="question-container">
+          <h2 id="question-text"></h2>
+          <div class="options-grid" id="options-grid">
+            <!-- Options will be loaded here -->
+          </div>
+        </div>
+
+        <div class="quiz-controls">
+          <button id="prev-btn" class="btn-secondary">Câu Trước</button>
+          <button id="next-btn" class="btn-primary">Câu Tiếp</button>
+          <button id="submit-btn" class="btn-accent">Nộp Bài</button>
+        </div>
+      </div>
+
+      <div id="results-view" class="results-view" style="display: none;">
+        <!-- Results view -->
+        <div class="results-card">
+          <h1>Kết Quả Bài Tập</h1>
+          <div class="results-stats">
+            <div class="result-stat">
+              <div class="result-label">Điểm Số</div>
+              <div class="result-value" id="final-score">0/100</div>
+            </div>
+            <div class="result-stat">
+              <div class="result-label">Phần Trăm</div>
+              <div class="result-value" id="final-percentage">0%</div>
+            </div>
+            <div class="result-stat">
+              <div class="result-label">Thời Gian</div>
+              <div class="result-value" id="time-spent">0 phút</div>
+            </div>
+          </div>
+
+          <div class="result-feedback" id="result-feedback"></div>
+
+          <div class="result-actions">
+            <button id="review-btn" class="btn-secondary">Xem Lại Đáp Án</button>
+            <button id="home-btn" class="btn-primary">Quay Về Trang Chủ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="dashboard-footer">
+    <div class="container">
+      <p>&copy; 2026 Vovinam Academy. Tất cả quyền được bảo lưu.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
