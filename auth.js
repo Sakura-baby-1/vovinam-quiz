@@ -1,84 +1,11 @@
 // ===== Authentication System =====
-
-class AuthManager {
-  constructor() {
-    this.users = this.loadUsers();
-    this.currentUser = this.loadCurrentUser();
-  }
-
-  loadUsers() {
-    const stored = localStorage.getItem('vovinam_users');
-    return stored ? JSON.parse(stored) : [];
-  }
-
-  saveUsers() {
-    localStorage.setItem('vovinam_users', JSON.stringify(this.users));
-  }
-
-  loadCurrentUser() {
-    const stored = localStorage.getItem('vovinam_currentUser');
-    return stored ? JSON.parse(stored) : null;
-  }
-
-  saveCurrentUser() {
-    if (this.currentUser) {
-      localStorage.setItem('vovinam_currentUser', JSON.stringify(this.currentUser));
-    }
-  }
-
-  register(email, fullName, password) {
-    if (this.users.find(u => u.email === email)) {
-      return { success: false, message: 'Email đã được đăng ký' };
-    }
-
-    const newUser = {
-      id: Date.now(),
-      email,
-      fullName,
-      password, // In production, this should be hashed
-      createdAt: new Date().toISOString()
-    };
-
-    this.users.push(newUser);
-    this.saveUsers();
-    return { success: true, message: 'Đăng ký thành công' };
-  }
-
-  login(email, password) {
-    const user = this.users.find(u => u.email === email && u.password === password);
-    if (!user) {
-      return { success: false, message: 'Email hoặc mật khẩu không chính xác' };
-    }
-
-    this.currentUser = {
-      id: user.id,
-      email: user.email,
-      fullName: user.fullName
-    };
-
-    this.saveCurrentUser();
-    return { success: true, message: 'Đăng nhập thành công' };
-  }
-
-  logout() {
-    this.currentUser = null;
-    localStorage.removeItem('vovinam_currentUser');
-  }
-
-  isLoggedIn() {
-    return this.currentUser !== null;
-  }
-
-  getCurrentUser() {
-    return this.currentUser;
-  }
-}
-
-const authManager = new AuthManager();
+// AuthManager is defined in app.js, we only need to initialize it here
 
 // ===== Auth Page Logic =====
 
 function initAuthPage() {
+  authManager = new AuthManager();
+  
   const loginForm = document.getElementById('login-form');
   const signupForm = document.getElementById('signup-form');
   const toSignupBtn = document.getElementById('to-signup');
@@ -140,10 +67,14 @@ function initAuthPage() {
 
 // Auto-initialize auth page
 if (document.body.classList.contains('auth-page')) {
-  window.addEventListener('DOMContentLoaded', initAuthPage);
-}
-
-// Redirect if already logged in
-if (document.body.classList.contains('auth-page') && authManager.isLoggedIn()) {
-  window.location.href = 'dashboard.html';
+  window.addEventListener('DOMContentLoaded', () => {
+    authManager = new AuthManager();
+    
+    // Redirect if already logged in
+    if (authManager.isLoggedIn()) {
+      window.location.href = 'dashboard.html';
+    }
+    
+    initAuthPage();
+  });
 }

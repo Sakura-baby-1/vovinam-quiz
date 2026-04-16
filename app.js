@@ -1,5 +1,82 @@
 // ===== App Data =====
 
+let authManager; // Will be set from auth.js
+
+// Fallback AuthManager definition (in case auth.js is not loaded)
+class AuthManager {
+  constructor() {
+    this.users = this.loadUsers();
+    this.currentUser = this.loadCurrentUser();
+  }
+
+  loadUsers() {
+    const stored = localStorage.getItem('vovinam_users');
+    return stored ? JSON.parse(stored) : [];
+  }
+
+  saveUsers() {
+    localStorage.setItem('vovinam_users', JSON.stringify(this.users));
+  }
+
+  loadCurrentUser() {
+    const stored = localStorage.getItem('vovinam_currentUser');
+    return stored ? JSON.parse(stored) : null;
+  }
+
+  saveCurrentUser() {
+    if (this.currentUser) {
+      localStorage.setItem('vovinam_currentUser', JSON.stringify(this.currentUser));
+    }
+  }
+
+  register(email, fullName, password) {
+    if (this.users.find(u => u.email === email)) {
+      return { success: false, message: 'Email đã được đăng ký' };
+    }
+
+    const newUser = {
+      id: Date.now(),
+      email,
+      fullName,
+      password,
+      createdAt: new Date().toISOString()
+    };
+
+    this.users.push(newUser);
+    this.saveUsers();
+    return { success: true, message: 'Đăng ký thành công' };
+  }
+
+  login(email, password) {
+    const user = this.users.find(u => u.email === email && u.password === password);
+    if (!user) {
+      return { success: false, message: 'Email hoặc mật khẩu không chính xác' };
+    }
+
+    this.currentUser = {
+      id: user.id,
+      email: user.email,
+      fullName: user.fullName
+    };
+
+    this.saveCurrentUser();
+    return { success: true, message: 'Đăng nhập thành công' };
+  }
+
+  logout() {
+    this.currentUser = null;
+    localStorage.removeItem('vovinam_currentUser');
+  }
+
+  isLoggedIn() {
+    return this.currentUser !== null;
+  }
+
+  getCurrentUser() {
+    return this.currentUser;
+  }
+}
+
 const appData = {
   quizzes: [
     {
@@ -678,6 +755,11 @@ function setupLogout() {
 // ===== Auto-initialize based on page =====
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize authManager if not already initialized
+  if (!authManager) {
+    authManager = new AuthManager();
+  }
+  
   if (document.body.classList.contains('dashboard-page')) {
     initDashboard();
   } else if (document.body.classList.contains('quiz-page')) {
