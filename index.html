@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Thi Vovinam</title>
+
+<style>
+body{
+  font-family: Arial;
+  background: #f2f4f8;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  margin:0;
+  padding:20px;
+}
+
+.container{
+  width:500px;
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 0 15px rgba(0,0,0,0.15);
+}
+
+h1{
+  text-align:center;
+  color:#c62828;
+  margin-top:0;
+}
+
+.question{
+  font-size:20px;
+  margin-bottom:15px;
+  font-weight:bold;
+}
+
+.btn{
+  display:block;
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border:none;
+  border-radius:8px;
+  background:#e0e0e0;
+  cursor:pointer;
+  font-size:16px;
+  transition:0.2s;
+}
+
+.btn:hover{
+  background:#cfd8dc;
+}
+
+.btn:disabled{
+  background:#9e9e9e;
+  color:#666;
+  cursor:not-allowed;
+}
+
+.next{
+  background:#1976d2;
+  color:white;
+  font-weight:bold;
+  margin-top:20px;
+}
+
+.next:hover:not(:disabled){
+  background:#0d47a1;
+}
+
+.feedback{
+  margin-top:10px;
+  font-weight:bold;
+  font-size:18px;
+}
+
+.result{
+  text-align:center;
+  font-size:24px;
+  color:green;
+  margin-top:20px;
+  font-weight:bold;
+}
+
+.progress{
+  text-align:center;
+  color:#666;
+  margin-bottom:15px;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>THI TRẮC NGHIỆM VOVINAM</h1>
+  
+  <div class="progress" id="progress"></div>
+  <div class="question" id="question"></div>
+  <div id="answers"></div>
+
+  <div class="feedback" id="feedback"></div>
+
+  <button class="btn next" id="nextBtn" onclick="nextQuestion()">Câu tiếp</button>
+
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+const questions = [
+  {
+    question: "Người sáng lập Vovinam là ai?",
+    options: ["Nguyễn Lộc", "Lê Sáng", "Nguyễn Văn Chiếu", "Trần Huy Phong"],
+    correct: 0
+  },
+  {
+    question: "Vovinam ra đời năm nào?",
+    options: ["1938", "1945", "1954", "1975"],
+    correct: 0
+  },
+  {
+    question: "Võ Việt Nam còn được gọi là gì?",
+    options: ["Vovinam Viet Vo Dao", "Vovinam Vo Dao", "Vo Viet Nam", "Vovinam"],
+    correct: 1
+  },
+  {
+    question: "Vovinam là bộ môn võ của nước nào?",
+    options: ["Thái Lan", "Hàn Quốc", "Việt Nam", "Trung Quốc"],
+    correct: 2
+  }
+];
+
+let index = 0;
+let score = 0;
+let answered = false;
+
+function loadQuestion(){
+  answered = false;
+  document.getElementById("feedback").innerText = "";
+  
+  document.getElementById("progress").innerText = 
+    "Câu " + (index+1) + " / " + questions.length;
+
+  document.getElementById("question").innerText = questions[index].question;
+
+  let html = "";
+  questions[index].options.forEach((opt,i)=>{
+    html += `<button class='btn' onclick='check(${i})'>${opt}</button>`;
+  });
+
+  document.getElementById("answers").innerHTML = html;
+  document.getElementById("nextBtn").disabled = true;
+}
+
+function check(i){
+  if(answered) return;
+  answered = true;
+
+  if(i === questions[index].correct){
+    score++;
+    document.getElementById("feedback").innerText = "✔ Đúng!";
+    document.getElementById("feedback").style.color = "green";
+  } else {
+    document.getElementById("feedback").innerText =
+      "✘ Sai - Đáp án đúng: " +
+      questions[index].options[questions[index].correct];
+    document.getElementById("feedback").style.color = "red";
+  }
+  
+  // Disable các button
+  document.querySelectorAll("#answers button").forEach(btn => btn.disabled = true);
+  document.getElementById("nextBtn").disabled = false;
+}
+
+function nextQuestion(){
+  index++;
+
+  if(index < questions.length){
+    loadQuestion();
+  } else {
+    document.getElementById("progress").innerText = "";
+    document.getElementById("question").innerText = "Hoàn thành bài thi!";
+    document.getElementById("answers").innerHTML = "";
+    document.getElementById("feedback").innerText = "";
+    document.getElementById("nextBtn").style.display = "none";
+    
+    let percentage = Math.round((score / questions.length) * 100);
+    document.getElementById("result").innerText =
+      "Điểm của bạn: " + score + "/" + questions.length + " (" + percentage + "%)";
+    
+    if(score === questions.length){
+      document.getElementById("result").style.color = "#4caf50";
+      document.getElementById("result").innerText += "\n🎉 Xuất sắc!";
+    } else if(score >= questions.length * 0.7){
+      document.getElementById("result").style.color = "#2196f3";
+    }
+  }
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
