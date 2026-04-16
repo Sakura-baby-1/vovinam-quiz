@@ -14,6 +14,12 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #333;
+  background: #eef3fa;
+}
+
+.container {
+  width: min(1200px, calc(100% - 40px));
+  margin: 0 auto;
 }
 
 /* Header */
@@ -33,18 +39,32 @@ body {
 }
 
 .top-bar .container {
-  max-width: 1200px;
-  margin: 0 auto;
   padding: 0 20px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-bar .top-links,
+.top-bar .class-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   align-items: center;
 }
 
 .top-bar a {
   color: white;
   text-decoration: none;
-  margin: 0 15px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.top-bar a:hover {
+  background: rgba(255,255,255,0.12);
 }
 
 .main-nav {
@@ -52,23 +72,35 @@ body {
 }
 
 .main-nav .container {
-  max-width: 1200px;
-  margin: 0 auto;
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 15px;
 }
 
 .logo {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 26px;
+  font-weight: 800;
   color: #1976d2;
+}
+
+.nav-toggle {
+  display: none;
+  background: #1976d2;
+  color: white;
+  border: none;
+  font-size: 22px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .main-menu {
   display: flex;
+  gap: 20px;
   list-style: none;
+  align-items: center;
 }
 
 .main-menu li {
@@ -79,11 +111,25 @@ body {
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
 .main-menu a:hover {
   color: #1976d2;
+}
+
+.main-menu.show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  padding: 15px 0;
+}
+
+.main-menu.show li {
+  width: 100%;
+  text-align: center;
 }
 
 /* Secondary Menu */
@@ -476,6 +522,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
   .main-menu {
     display: none;
   }
@@ -492,6 +542,19 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 550px) {
+  .top-bar .top-links,
+  .top-bar .class-list {
+    justify-content: center;
+  }
+
+  .start-btn,
+  .full-access-btn {
+    width: 100%;
+    max-width: 320px;
+  }
+}
 </style>
 </head>
 
@@ -500,7 +563,7 @@ body {
   <header class="header">
     <div class="top-bar">
       <div class="container">
-        <div>
+          <div class="top-links">
           <a href="#">MBTI</a>
           <a href="#">DISC</a>
           <a href="#">Test IQ</a>
@@ -530,11 +593,12 @@ body {
     <nav class="main-nav">
       <div class="container">
         <div class="logo">Trắc Nghiệm</div>
-        <ul class="main-menu">
-          <li><a href="#">Đại Học</a></li>
-          <li><a href="#">Thi Chuyển Cấp</a></li>
-          <li><a href="#">Giới Thiệu</a></li>
-          <li><a href="#">Chính Sách</a></li>
+        <button class="nav-toggle" onclick="toggleMenu()" aria-label="Mở menu">☰</button>
+        <ul class="main-menu" id="mainNavMenu">
+          <li><a href="#home">Trang Chủ</a></li>
+          <li><a href="#dethi">Đề Thi</a></li>
+          <li><a href="#bo-de">Bộ Đề</a></li>
+          <li><a href="#lien-he">Liên Hệ</a></li>
           <li><a href="#">Dịch Vụ</a></li>
           <li><a href="#">Tuyển Dụng</a></li>
         </ul>
@@ -543,7 +607,7 @@ body {
   </header>
 
   <!-- Main Content -->
-  <main class="main-content">
+  <main class="main-content" id="home">
     <div class="container">
       <h1 class="exam-title">ĐỀ THI THỬ VOVINAM – ĐỀ 1</h1>
 
@@ -565,46 +629,46 @@ body {
 
         <button class="start-btn" onclick="startQuiz()">BẮT ĐẦU LÀM BÀI</button>
 
-        <div class="exam-list">
+        <div class="exam-list" id="dethi">
           <h3>Chọn Đề Thi</h3>
           <div class="exam-grid">
-            <a href="#" class="exam-card" onclick="startQuiz()">
+            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
               <h4>Đề Số 1</h4>
               <p>Vovinam Cơ Bản</p>
             </a>
-            <a href="#" class="exam-card" onclick="startQuiz()">
+            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
               <h4>Đề Số 2</h4>
               <p>Lịch Sử Vovinam</p>
             </a>
-            <a href="#" class="exam-card" onclick="startQuiz()">
+            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
               <h4>Đề Số 3</h4>
               <p>Kỹ Thuật Võ</p>
             </a>
-            <a href="#" class="exam-card" onclick="startQuiz()">
+            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
               <h4>Đề Số 4</h4>
               <p>Triết Lý Võ Đạo</p>
             </a>
-            <a href="#" class="exam-card" onclick="startQuiz()">
+            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
               <h4>Đề Số 5</h4>
               <p>Bài Quyền</p>
             </a>
-            <a href="#" class="exam-card" onclick="startQuiz()">
+            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
               <h4>Đề Số 6</h4>
               <p>Đòn Thế</p>
             </a>
-            <a href="#" class="exam-card" onclick="startQuiz()">
+            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
               <h4>Đề Số 7</h4>
               <p>Binh Khí</p>
             </a>
-            <a href="#" class="exam-card" onclick="startQuiz()">
+            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
               <h4>Đề Số 8</h4>
               <p>Đối Luyện</p>
             </a>
-            <a href="#" class="exam-card" onclick="startQuiz()">
+            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
               <h4>Đề Số 9</h4>
               <p>Ôn Tập Tổng Hợp</p>
             </a>
-            <a href="#" class="exam-card" onclick="startQuiz()">
+            <a href="#dethi" class="exam-card" onclick="event.preventDefault(); startQuiz()">
               <h4>Đề Số 10</h4>
               <p>Thi Chứng Chỉ</p>
             </a>
@@ -615,7 +679,7 @@ body {
   </main>
 
   <!-- Extended Section -->
-  <section class="extended-section">
+  <section class="extended-section" id="bo-de">
     <div class="container">
       <h2 class="extended-title">Đề Thi Thử Vovinam 200 Câu Đầy Đủ</h2>
       <p style="font-size: 16px; color: #666; margin-bottom: 30px;">
@@ -809,11 +873,14 @@ body {
       score = 0;
       answered = false;
       document.getElementById('quizModal').style.display = 'block';
+      document.getElementById('quizFeedback').innerText = '';
+      document.getElementById('nextBtn').style.display = 'inline-block';
       loadQuestion();
     }
 
     function closeQuiz() {
       document.getElementById('quizModal').style.display = 'none';
+      document.getElementById('mainNavMenu').classList.remove('show');
     }
 
     function loadQuestion() {
@@ -879,6 +946,11 @@ body {
       }
 
       document.getElementById('quizFeedback').innerText = resultText;
+    }
+
+    function toggleMenu() {
+      const menu = document.querySelector('.main-menu');
+      menu.classList.toggle('show');
     }
 
     // Close modal when clicking outside
